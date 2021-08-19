@@ -12,5 +12,5 @@ dash_app = dash.Dash(
     external_stylesheets=[dbc.themes.BOOTSTRAP, FA],
     eager_loading=True,
     update_title='Loading...',
-    title='CPM | Dashboard'
+    title='Crypto Portfolio Monitor'
 )
