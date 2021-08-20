@@ -1,6 +1,7 @@
 import dash
 import dash_bootstrap_components as dbc
 import flask
+from redis import Redis
 
 FA = "https://use.fontawesome.com/releases/v5.15.1/css/all.css"
 
@@ -14,3 +15,6 @@ dash_app = dash.Dash(
     update_title='Loading...',
     title='Crypto Portfolio Monitor'
 )
+
+redis_host = '127.0.0.1'
+rdb_users = r1 = Redis(redis_host, port=6379, password="Crypt0P0rtf0li0M0nitor", db=0)
