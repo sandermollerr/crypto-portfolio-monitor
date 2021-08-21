@@ -17,4 +17,4 @@ dash_app = dash.Dash(
 )
 
 redis_host = '127.0.0.1'
-rdb_users = r1 = Redis(redis_host, port=6379, password="Crypt0P0rtf0li0M0nitor", db=0)
+rdb_users = Redis(redis_host, port=6379, db=0, password='rdbpassword')
