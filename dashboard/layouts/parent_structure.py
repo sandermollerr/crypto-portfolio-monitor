@@ -4,6 +4,8 @@ import dash_html_components as html
 from dash.dependencies import Input
 from dash.dependencies import Output
 from dash.dependencies import State
+from dashboard.layouts import login
+import dash
 
 navbar = dbc.NavbarSimple(
     children=[
@@ -155,6 +157,8 @@ def render_callbacks(app):
             return html.P("Coinbase page")
         elif pathname == "/kraken":
             return html.P("Kraken page")
+        elif pathname == "/login":
+            return login.login_layout
         # If the user tries to reach a different page, return a 404 message
         return dbc.Jumbotron(
             [
@@ -163,3 +167,23 @@ def render_callbacks(app):
                 html.P(f"The pathname {pathname} was not recognised..."),
             ]
         )
+
+    @app.callback(
+        Output("login-button", "className"),
+        Output("signup-button", "className"),
+        Output("log-body", "className"),
+        Output("reg-body", "className"),
+        Input("signup-button", "n_clicks"),
+        Input("login-button", "n_clicks"),
+
+    )
+    def toggle_tab_headers(n1, n2):
+        ctx = dash.callback_context
+        if not ctx.triggered:
+            return "active", "inactive", "tab-body active", "tab-body"
+        else:
+            button_id = ctx.triggered[0]['prop_id'].split('.')[0]
+            if button_id != "login-button":
+                return "inactive", "active", "tab-body", "tab-body active"
+            else:
+                return "active", "inactive", "tab-body active", "tab-body"
