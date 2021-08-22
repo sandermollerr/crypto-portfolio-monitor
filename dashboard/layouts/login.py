@@ -1,11 +1,5 @@
 import dash_bootstrap_components as dbc
-from dash_bootstrap_components._components.Input import Input
 import dash_html_components as html
-from dash_html_components.Button import Button
-from dash_html_components.Col import Col
-import dash_core_components as dcc
-from dash_html_components.Output import Output
-import dash
 
 login_box = html.Div(
     [
